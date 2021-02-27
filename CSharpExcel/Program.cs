@@ -20,7 +20,7 @@ namespace CSharpExcel
 
             try
             {
-                File.WriteAllBytes("Students.xls", table);
+                File.WriteAllBytes("Students.xlsx", table);
             }
             catch (IOException)
             {

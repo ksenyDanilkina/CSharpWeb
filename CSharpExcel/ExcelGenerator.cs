@@ -36,15 +36,16 @@ namespace CSharpExcel
 
             worksheet.Cells[1, 1, row, headerParameters.Count].AutoFitColumns();
 
-            worksheet.Cells[1, 1, 1, headerParameters.Count].Style.Fill.PatternType = ExcelFillStyle.Solid;
-            worksheet.Cells[1, 1, 1, headerParameters.Count].Style.Fill.BackgroundColor
-                .SetColor(ColorTranslator.FromHtml("#A5A5A5"));
-            worksheet.Cells[1, 1, 1, headerParameters.Count].Style.Font.Bold = true;
+            var header = worksheet.Cells[1, 1, 1, headerParameters.Count];
 
-            worksheet.Cells[2, 1, students.Count + 1, headerParameters.Count].Style.Fill.PatternType =
-                ExcelFillStyle.Solid;
-            worksheet.Cells[2, 1, students.Count + 1, headerParameters.Count].Style.Fill.BackgroundColor
-                .SetColor(ColorTranslator.FromHtml("#EEEEEE"));
+            header.Style.Fill.PatternType = ExcelFillStyle.Solid;
+            header.Style.Fill.BackgroundColor.SetColor(ColorTranslator.FromHtml("#A5A5A5"));
+            header.Style.Font.Bold = true;
+
+            var cells = worksheet.Cells[2, 1, students.Count + 1, headerParameters.Count];
+
+            cells.Style.Fill.PatternType = ExcelFillStyle.Solid;
+            cells.Style.Fill.BackgroundColor.SetColor(ColorTranslator.FromHtml("#EEEEEE"));
 
             worksheet.Cells[1, 1, students.Count + 1, headerParameters.Count].Style.Border
                 .BorderAround(ExcelBorderStyle.Double);
